@@ -1,0 +1,12 @@
+{% extends "base.html" %} {%block content%}
+<div class="form-group">
+  <form method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+{% if form.errors %}
+<div class="alert alert-danger my-5">{{form.errors.title.as_text}}</div>
+{%endif%}
+<a href="{% url 'notes.list' %}" class="btn btn-danger m-2">Cancel</a>
+{%endblock%}
